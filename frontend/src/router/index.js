@@ -18,6 +18,10 @@ export default new Router({
         {
           path: '/',
           component: resolve => require(['../components/HelloWorld.vue'], resolve)
+        },
+        {
+          path: '/menu',
+          component: resolve => require(['../components/page/Menu.vue'], resolve)
         }
       ]
     }

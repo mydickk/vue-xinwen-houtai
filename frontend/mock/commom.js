@@ -12,6 +12,21 @@ module.exports = {
                     title: '自述'
                 },
                 {
+                    icon: 'el-icon-setting',
+                    index: 'setting',
+                    title: '系统设置',
+                    subs: [
+                        {
+                            index: 'menu',
+                            title: '菜单管理'
+                        },
+                        {
+                            index: 'users',
+                            title: '用户管理'
+                        }
+                    ]
+                },
+                {
                     icon: 'el-icon-menu',
                     index: 'user',
                     title: '用户管理',
