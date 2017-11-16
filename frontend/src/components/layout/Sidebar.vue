@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
       <el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
-          <template v-for="item in items">
+          <template v-for="item in sidebar">
               <template v-if="item.subs">
                   <el-submenu :index="item.index">
                       <template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
@@ -20,26 +20,34 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
   export default {
     data () {
-      return {
-        items: [
-          {
-            icon: 'el-icon-setting',
-            index: 'readme',
-            title: '自述'
-          }
-        ]};
+      return { };
     },
     computed: {
+      ...mapState({
+        sidebar: state => state.sidebar
+      }),
+      ...mapGetters([
+        'chgSidebar',
+        'getUserList'
+      ]),
       onRoutes () {
         return this.$route.path.replace('/', '');
       }
     },
-    created () {
-      this.$axios.get('/api/sidebar').then((res) => {
-        this.items = res.data;
-      });
+    methods: {
+      ...mapMutations([
+        'setSidebar',
+        'setUserList'
+      ]),
+      ...mapActions([
+        'fetchSideBar'
+      ])
+    },
+    mounted () {
+      this.fetchSideBar();
     }
   };
 </script>

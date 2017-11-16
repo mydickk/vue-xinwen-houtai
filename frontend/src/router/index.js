@@ -6,12 +6,12 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Hello',
+      path: '/login',
+      name: 'login',
       component: resolve => require(['../components/page/Login.vue'], resolve)
     },
     {
-      path: '/index',
+      path: '/',
       name: 'index',
       component: resolve => require(['../components/layout/Home.vue'], resolve),
       children: [
@@ -22,6 +22,10 @@ export default new Router({
         {
           path: '/menu',
           component: resolve => require(['../components/page/Menu.vue'], resolve)
+        },
+        {
+          path: '/list',
+          component: resolve => require(['../components/page/UserList.vue'], resolve)
         }
       ]
     }
